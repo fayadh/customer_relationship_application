@@ -7,9 +7,8 @@ class Rolodex
 	end
 
 	def add_contact(first_name, last_name)
-		id = @contacts.length + 1
-		entry = Array.new
-		entry.push("#{id} #{first_name} #{last_name}")
+		generate_id = @contacts.length + 1
+		entry = { id: generate_id, first_name: first_name, last_name: last_name }
 		@contacts.push(entry)
 	end 
 

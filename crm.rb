@@ -9,7 +9,6 @@ require_relative 'rolodex'
 
 class CRM
 
-
 	def initialize
 		@rolodex = Rolodex.new
 	end
@@ -36,6 +35,7 @@ class CRM
 	def decision(input)
 		if @input == 1 then list_contacts end
 		if @input == 2 then add_new_contact end
+		if @input == 3 then edit_contact_information end	
 	end
 
 	def add_new_contact
