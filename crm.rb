@@ -1,9 +1,20 @@
-class MainMenu
+## We have to describe this first. 
+## There are many things communicating with each other. 
+
+## The CRM class is the menu that gets you where you need to be. 
+## The Contact_Editor class defines the attributes I want to change or add.
+## The Contact_Editor class passes that information over to the rolodex,
+## where everything is stored. 
+require_relative 'rolodex'
+
+class CRM
+
+
 	def initialize
-		@contacts = ['fayadh', 'daniel', 'never', 'harlem', 'anderson']
+		@rolodex = Rolodex.new
 	end
 
-	def run 
+	def print_main_menu
 		puts ' ---------------------------------- '
 		puts 'Main Menu. Welcome to Contact Book.'
 		puts ''
@@ -17,23 +28,28 @@ class MainMenu
 		print 'Selection: '
 		@input = gets.chomp.to_i 
 		puts ' ---------------------------------- '
+		decision(@input)
+	end
 
+	def decision(input)
 		if @input == 1 then list_contacts end
 		if @input == 2 then add_new_contact end
 	end
 
 	def add_new_contact
-		#This is what holds all our contacts.
 		puts "What's the first name of the contact?"
-		input = gets.chomp.to_s
-		@contacts.push(input) 
-		puts "Added name: #{input}"
+		first_name = gets.chomp.to_s
+		puts "What's the last name of the contact?"
+		last_name = gets.chomp.to_s
+		puts "Thank You."
+		@rolodex.add_contact(first_name, last_name)
+		puts "Added name: #{first_name} #{last_name}"
+		print_main_menu
 	end
 
 	def list_contacts	
-		@contacts.each { |file| puts file }
-		echo "clear"  
-		run
+		@rolodex.contacts.each { |file| puts file } 
+		print_main_menu
 	end
 
 
@@ -57,6 +73,6 @@ class MainMenu
 	end
 end
 
-menu = MainMenu.new 
-menu.run 
+menu = CRM.new 
+menu.print_main_menu 
 
