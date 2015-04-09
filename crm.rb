@@ -22,6 +22,8 @@ class CRM
 		puts '[2] Add New Contact' 
 		puts '[3] Edit Contact Information'
 		puts '[4] Sort By'
+		puts '[5] Import Existing CRM'
+		puts '[6] Save Current CRM Database'
 		puts ' '
 		puts 'What would you like to do today? [Select Number]'
 		puts ' ---------------------------------- '
